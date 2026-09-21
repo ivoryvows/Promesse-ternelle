@@ -1,1 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Qabool Hai — Ali & Fatema</title>
+
+<meta property="og:title" content="Qabool Hai — Ali & Fatema">
+<meta property="og:description" content="A beautiful beginning of forever.">
+<meta property="og:image" content="https://i.postimg.cc/8kLFTSRf/IMG-8256.png">
+<meta property="og:url" content="https://ivoryvows.github.io/Whispering-blooms/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.75),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(255,226,164,.35),transparent 35%),
+        linear-gradient(135deg,#fbf1d9,#f8edcf,#fff8e8,#f7e8c4);
+    background-size:200% 200%;
+    animation:bgMove 14s ease-in-out infinite alternate;
+    font-family:'Playfair Display',serif;
+    color:#594a2b;
+    overflow-x:hidden;
+}
+
+@keyframes bgMove{
+    0%{
+        background-position:0% 0%;
+    }
+    100%{
+        background-position:100% 100%;
+    }
+}
+
+
+/* =========================
+   CANVAS EFFECTS
+========================= */
+
+#petalCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:1;
+}
+
+#sparkCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:10000;
+}
+
+
+/* =========================
+   OPENING
+========================= */
+
+#opening{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    background:#f8edcf;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+#envelopePoster{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+#envelopeVideo{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+}
+
+#tapOverlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:3;
+    cursor:pointer;
+}
+
+#tapText{
+    color:#fffaf0;
+    font-family:'Great Vibes',cursive;
+    font-size:34px;
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.35),
+        0 0 15px rgba(255,255,255,.35);
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+#musicToggle{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid #b89768;
+    background:rgba(253,251,247,.92);
+    color:#8c7853;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9998;
+    font-size:17px;
+    box-shadow:0 3px 12px rgba(89,74,43,.15);
+}
+
+
+/* =========================
+   COMMON SECTION
+========================= */
+
+section{
+    min-height:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:35px 12px;
+    position:relative;
+    z-index:2;
+}
+
+.invitation-card{
+    background:#fdfbf7;
+    border:2px solid #b89768;
+    padding:40px 30px;
+    width:350px;
+    max-width:100%;
+    border-radius:16px;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.sub-heading{
+    font-size:11px;
+    color:#8c7853;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-family:'Cinzel',serif;
+    margin-bottom:8px;
+}
+
+.section-title{
+    color:#594a2b;
+    font-family:'Great Vibes',cursive;
+    font-size:36px;
+    margin:0 0 10px 0;
+    font-weight:normal;
+}
+
+.divider{
+    width:40px;
+    height:1px;
+    background:#b89768;
+    margin:15px auto;
+}
+
+
+/* =========================
+   FLOWERS
+========================= */
+
+@keyframes flowerFloat{
+    0%{
+        transform:translateY(0px) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-3px) rotate(1deg);
+    }
+
+    100%{
+        transform:translateY(0px) rotate(0deg);
+    }
+}
+
+.corner-flower-tl{
+    position:absolute;
+    top:-8px;
+    left:-8px;
+    width:110px;
+    opacity:.95;
+    pointer-events:none;
+    animation:flowerFloat 4s ease-in-out infinite;
+    z-index:2;
+}
+
+.corner-flower-br{
+    position:absolute;
+    bottom:-8px;
+    right:-8px;
+    width:120px;
+    opacity:.95;
+    pointer-events:none;
+    animation:flowerFloat 4s ease-in-out infinite 2s;
+    z-index:2;
+}
+
+
+/* =========================
+   VIDEO FRAME
+========================= */
+
+.video-frame{
+    width:350px;
+    max-width:100%;
+    margin:0 auto;
+    border:2px solid #b89768;
+    border-radius:16px;
+    overflow:hidden;
+    background:#fdfbf7;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+    position:relative;
+}
+
+.video-frame video{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:90vh;
+    object-fit:cover;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+#welcomeSection{
+    padding-top:0;
+    padding-bottom:35px;
+}
+
+
+/* =========================
+   BEAUTIFUL BEGINNING
+========================= */
+
+#beginningSection{
+    min-height:auto;
+}
+
+.beginning-card{
+    padding:45px 30px;
+}
+
+.message-text{
+    font-size:13px;
+    color:#6b5c3f;
+    line-height:1.6;
+    margin-bottom:20px;
+    padding:0 10px;
+    font-style:italic;
+}
+
+.couple-names{
+    color:#594a2b;
+    font-family:'Great Vibes',cursive;
+    font-size:34px;
+    margin:15px 0 5px 0;
+}
+
+
+/* =========================
+   FAMILY
+========================= */
+
+#familySection{
+    min-height:auto;
+}
+
+
+/* =========================
+   MENU VIDEO
+========================= */
+
+#menuSection{
+    min-height:auto;
+}
+
+.menu-card{
+    padding:40px 25px 45px;
+}
+
+.menu-frame{
+    position:relative;
+    width:100%;
+    max-width:300px;
+    margin:0 auto;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #b89768;
+    background:#fdfbf7;
+    box-shadow:0 4px 15px rgba(89,74,43,.12);
+}
+
+.menu-frame video{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:cover;
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+#timelineSection{
+    min-height:auto;
+}
+
+.timeline-card{
+    background:#fdfbf7;
+    border:2px solid #b89768;
+    padding:40px 30px;
+    width:340px;
+    max-width:100%;
+    border-radius:16px;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.celebration-text{
+    font-size:15px;
+    color:#8c7853;
+    font-style:italic;
+    margin-bottom:2px;
+}
+
+.event-title h2{
+    color:#594a2b;
+    font-family:'Great Vibes',cursive;
+    font-size:40px;
+    margin:0 0 15px 0;
+    font-weight:normal;
+}
+
+.timeline-card .divider{
+    width:50px;
+    height:1px;
+    background:#b89768;
+    margin:0 auto 25px auto;
+}
+
+.timeline-container{
+    text-align:left;
+    position:relative;
+    padding-left:25px;
+    margin:15px 0;
+}
+
+.timeline-container::before{
+    content:'';
+    position:absolute;
+    left:7px;
+    top:5px;
+    bottom:5px;
+    width:2px;
+    background:#b89768;
+}
+
+.timeline-item{
+    margin-bottom:18px;
+    position:relative;
+}
+
+.timeline-item:last-child{
+    margin-bottom:0;
+}
+
+.timeline-item::after{
+    content:'';
+    position:absolute;
+    left:-18px;
+    top:4px;
+    width:8px;
+    height:8px;
+    background:#b89768;
+    border-radius:50%;
+}
+
+.time{
+    font-weight:600;
+    color:#8c7853;
+    font-size:12px;
+    display:block;
+    font-family:'Cinzel',serif;
+}
+
+.event{
+    color:#3b301a;
+    font-size:14px;
+}
+
+.timeline-card .corner-flower-tl{
+    width:120px;
+}
+
+.timeline-card .corner-flower-br{
+    width:130px;
+}
+
+
+/* =========================
+   VENUE
+========================= */
+
+#venueSection{
+    min-height:auto;
+}
+
+.venue-card{
+    padding:40px 25px;
+}
+
+.venue-box{
+    background:#5c4735;
+    border:1px solid #b89768;
+    border-radius:10px;
+    padding:30px 20px;
+    margin:15px 0;
+    box-shadow:inset 0 0 10px rgba(0,0,0,.1);
+}
+
+.venue-title-label{
+    font-size:10px;
+    color:#d1b894;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-family:'Cinzel',serif;
+    margin-bottom:5px;
+}
+
+.venue-name{
+    color:#fdfbf7;
+    font-family:'Great Vibes',cursive;
+    font-size:38px;
+    margin:5px 0;
+    font-weight:normal;
+}
+
+.venue-city{
+    color:#fdfbf7;
+    font-size:13px;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+.map-btn{
+    display:inline-block;
+    background:transparent;
+    color:#fdfbf7;
+    border:1px solid #b89768;
+    padding:10px 20px;
+    border-radius:6px;
+    font-family:'Cinzel',serif;
+    font-size:10px;
+    letter-spacing:2px;
+    text-decoration:none;
+    transition:all .3s ease;
+}
+
+.map-btn:hover{
+    background:#b89768;
+    color:#5c4735;
+}
+
+
+/* =========================
+   DRESS CODE
+========================= */
+
+#dressSection{
+    min-height:auto;
+}
+
+.dress-card{
+    background:#fdfbf7;
+    border:2px solid #b89768;
+    width:350px;
+    max-width:100%;
+    height:350px;
+    border-radius:16px;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px 25px;
+}
+
+.dress-sub-heading{
+    font-size:11px;
+    color:#8c7853;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-family:'Cinzel',serif;
+    margin-bottom:8px;
+}
+
+.description-text{
+    font-size:11.5px;
+    color:#6b5c3f;
+    line-height:1.45;
+    margin:0 0 15px 0;
+    padding:0 5px;
+    font-style:italic;
+    max-width:290px;
+}
+
+.palette-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin:0;
+}
+
+.color-circle{
+    width:24px;
+    height:24px;
+    flex-shrink:0;
+    border-radius:50%;
+    border:1px solid rgba(184,151,104,.5);
+    box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.dress-card .corner-flower-tl{
+    width:110px;
+}
+
+.dress-card .corner-flower-br{
+    width:120px;
+}
+
+
+/* =========================
+   LAST FRAME
+========================= */
+
+#lastSection{
+    min-height:auto;
+    padding-bottom:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.last-card{
+    background:#fdfbf7;
+    border:2px solid #b89768;
+    padding:40px 30px;
+    width:360px;
+    max-width:100%;
+    border-radius:16px;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.square-frame{
+    position:absolute;
+    top:20px;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    border:2px solid #dcd0bb;
+    border-radius:12px;
+    pointer-events:none;
+    z-index:0;
+}
+
+.content{
+    position:relative;
+    z-index:1;
+}
+
+.diamond-divider{
+    color:#b89768;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.main-message{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:24px;
+    color:#5c4735;
+    line-height:1.35;
+    margin-bottom:25px;
+}
+
+.footer-details{
+    font-size:13px;
+    color:#8c7853;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-family:'Cinzel',serif;
+    margin-top:30px;
+    font-weight:600;
+}
+
+.last-card .couple-names{
+    font-family:'Great Vibes',cursive;
+    font-size:42px;
+    color:#594a2b;
+    margin:0 0 30px 0;
+    font-weight:normal;
+}
+
+.names-and{
+    font-size:28px;
+    vertical-align:middle;
+    margin:0 12px;
+}
+
+.last-card .corner-flower-tl{
+    position:absolute;
+    top:-10px;
+    left:-10px;
+    width:115px;
+    opacity:.95;
+    pointer-events:none;
+    animation:flowerFloat 4s ease-in-out infinite;
+    z-index:5;
+}
+
+.last-card .corner-flower-br{
+    position:absolute;
+    bottom:-10px;
+    right:-10px;
+    width:125px;
+    opacity:.95;
+    pointer-events:none;
+    animation:flowerFloat 4s ease-in-out infinite 2s;
+    z-index:5;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:420px){
+
+    #tapText{
+        font-size:29px;
+    }
+
+    .invitation-card,
+    .dress-card{
+        width:350px;
+        max-width:calc(100vw - 24px);
+    }
+
+    .timeline-card{
+        width:340px;
+        max-width:calc(100vw - 24px);
+    }
+
+    .last-card{
+        width:360px;
+        max-width:calc(100vw - 24px);
+    }
+
+    .video-frame{
+        max-width:calc(100vw - 24px);
+    }
+
+    .menu-frame{
+        max-width:calc(100vw - 70px);
+    }
+
+    #musicToggle{
+        right:14px;
+        bottom:14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND CANVASES
+========================= -->
+
+<canvas id="petalCanvas"></canvas>
+<canvas id="sparkCanvas"></canvas>
+
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<div id="opening">
+
+    <img
+        id="envelopePoster"
+        src="envelope pic.jpg"
+        alt="Wedding Invitation"
+    >
+
+    <video
+        id="envelopeVideo"
+        muted
+        playsinline
+        webkit-playsinline
+        preload="auto"
+    >
+        <source src="./envelope.mp4" type="video/mp4">
+    </video>
+
+    <div id="tapOverlay">
+        <div id="tapText">Tap to Open</div>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio id="music" loop preload="auto">
+    <source src="./alikesath.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle" type="button">♪</button>
+
+
+<!-- =========================
+     WELCOME VIDEO
+========================= -->
+
+<section id="welcomeSection">
+
+    <div class="video-frame">
+
+        <video
+            id="welcomeVideo"
+            playsinline
+            preload="auto"
+        >
+            <source src="./welcome1.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BEAUTIFUL BEGINNING
+========================= -->
+
+<section id="beginningSection">
+
+    <div class="invitation-card beginning-card">
+
+        <img
+            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+            alt="Top Floral"
+            class="corner-flower-tl"
+        >
+
+        <div style="
+            font-family:'Playfair Display',serif;
+            font-size:18px;
+            color:#594a2b;
+            margin-bottom:2px;
+        ">
+            Un nouveau chapitre
+        </div>
+
+        <div class="section-title">
+            Un merveilleux commencement
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="message-text">
+            Avec des cœurs remplis de joie, nos familles vous invitent à célébrer ce merveilleux commencement, fait de promesses, de bénédictions et d’un amour éternel.
+        </div>
+
+        <div class="couple-names">
+            Danny &amp; Rudy
+        </div>
+
+        <img
+            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+            alt="Bottom Floral"
+            class="corner-flower-br"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FAMILY VIDEO
+========================= -->
+
+<section id="familySection">
+
+    <div class="video-frame">
+
+        <video
+            id="familyVideo"
+            playsinline
+            muted
+            autoplay
+            loop
+            preload="auto"
+        >
+            <source src="./family1.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU VIDEO
+========================= -->
+
+<section id="menuSection">
+
+    <div class="invitation-card menu-card">
+
+        <img
+            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+            alt="Top Floral"
+            class="corner-flower-tl"
+        >
+
+        <div class="menu-frame">
+
+            <video
+                id="menuVideo"
+                playsinline
+                muted
+                autoplay
+                loop
+                preload="auto"
+            >
+                <source src="./menu.mp4" type="video/mp4">
+            </video>
+
+        </div>
+
+        <img
+            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+            alt="Bottom Floral"
+            class="corner-flower-br"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TIMELINE
+========================= -->
+
+<section id="timelineSection">
+
+    <div class="timeline-card">
+
+        <img
+            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+            alt="Top Floral"
+            class="corner-flower-tl"
+        >
+
+        <div class="celebration-text">
+            La célébration de
+        </div>
+
+        <div class="event-title">
+            <h2>Notre mariage</h2>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="timeline-container">
+
+            <div class="timeline-item">
+                <span class="time">18h</span>
+                <span class="event">Arrivée des invités</span>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">19h30</span>
+                <span class="event">Entrée des mariés</span>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">20h</span>
+                <span class="event">Présentation</span>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">21h30</span>
+                <span class="event">Ouverture du buffet</span>
+            </div>
+
+        </div>
+
+        <img
+            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+            alt="Bottom Floral"
+            class="corner-flower-br"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCATION MAP
+========================= -->
+
+<section id="venueSection">
+
+    <div class="invitation-card venue-card">
+
+        <img
+            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+            alt="Top Floral"
+            class="corner-flower-tl"
+        >
+
+        <div class="sub-heading">
+            The Venue
+        </div>
+
+        <div class="venue-box">
+
+            <div class="venue-title-label">
+                The Venue
+            </div>
+
+            <div class="venue-name">
+                Pera Restaurant
+            </div>
+
+            <div class="venue-city">
+                Kinshasa
+            </div>
+
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=-4.303107,15.303930"
+                target="_blank"
+                class="map-btn"
+            >
+                VIEW ON GOOGLE MAPS
+            </a>
+
+        </div>
+
+        <img
+            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+            alt="Bottom Floral"
+            class="corner-flower-br"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DRESS CODE
+========================= -->
+
+<section id="dressSection">
+
+    <div class="dress-card">
+
+        <img
+            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+            alt="Top Floral"
+            class="corner-flower-tl"
+        >
+
+        <div class="dress-sub-heading">
+            Notre palette de mariage
+        </div>
+
+        <div class="description-text">
+            Nous aimerions que nos invités s'habillent dans des tons terreux chauds, du beige, du marron ou des teintes neutres pour correspondre à notre thème.
+        </div>
+
+        <div class="palette-container">
+
+            <div
+                class="color-circle"
+                style="background-color:#4F382B;"
+                title="Dark Brown">
+            </div>
+
+            <div
+                class="color-circle"
+                style="background-color:#8C5F43;"
+                title="Medium Brown">
+            </div>
+
+            <div
+                class="color-circle"
+                style="background-color:#C8B7A3;"
+                title="Light Beige / Taupe">
+            </div>
+
+            <div
+                class="color-circle"
+                style="background-color:#A27B5A;"
+                title="Caramel Tan">
+            </div>
+
+        </div>
+
+        <img
+            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+            alt="Bottom Floral"
+            class="corner-flower-br"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAST FRAME
+========================= -->
+
+<section id="lastSection">
+
+    <div class="last-card">
+
+        <img
+            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+            alt="Top Left Flower"
+            class="corner-flower-tl"
+        >
+
+        <img
+            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+            alt="Bottom Right Flower"
+            class="corner-flower-br"
+        >
+
+        <div class="square-frame"></div>
+
+        <div class="content">
+
+            <div class="diamond-divider">
+                ◇
+            </div>
+
+            <div class="main-message">
+
+                Pour tous ceux qui souhaitent nous offrir un cadeau,<br>
+                une participation en espèce sera appréciée.
+
+            </div>
+
+            <div class="couple-names">
+
+                Danny
+                <span class="names-and">&amp;</span>
+                Rudy
+
+            </div>
+
+            <div class="footer-details">
+                DECEMBER 19, 2026
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const opening = document.getElementById("opening");
+const envelopePoster = document.getElementById("envelopePoster");
+const envelopeVideo = document.getElementById("envelopeVideo");
+const tapOverlay = document.getElementById("tapOverlay");
+const welcomeVideo = document.getElementById("welcomeVideo");
+const familyVideo = document.getElementById("familyVideo");
+
+const music = document.getElementById("music");
+const musicToggle = document.getElementById("musicToggle");
+
+let invitationOpened = false;
+
+
+/* =========================
+   PRELOAD
+========================= */
+
+music.load();
+envelopeVideo.load();
+welcomeVideo.load();
+familyVideo.load();
+
+
+/* =========================
+   OPEN INVITATION
+========================= */
+
+function openInvitation(){
+
+    if(invitationOpened){
+        return;
+    }
+
+    invitationOpened = true;
+
+    /* Start music immediately after user tap */
+
+    music.currentTime = 0;
+
+    const musicPromise = music.play();
+
+    if(musicPromise !== undefined){
+
+        musicPromise.catch(() => {});
+
+    }
+
+
+    /* Show envelope video */
+
+    envelopePoster.style.display = "none";
+    envelopeVideo.style.display = "block";
+
+    envelopeVideo.currentTime = 0;
+
+    const videoPromise = envelopeVideo.play();
+
+    if(videoPromise !== undefined){
+
+        videoPromise.catch(() => {});
+
+    }
+
+    tapOverlay.style.display = "none";
+
+    musicToggle.style.display = "flex";
+
+    createGoldBurst();
+
+}
+
+
+/* =========================
+   TAP / CLICK
+========================= */
+
+tapOverlay.addEventListener("click", openInvitation);
+
+tapOverlay.addEventListener(
+    "touchend",
+    function(e){
+
+        e.preventDefault();
+
+        openInvitation();
+
+    },
+    {
+        passive:false
+    }
+);
+
+
+/* =========================
+   ENVELOPE ENDED
+========================= */
+
+envelopeVideo.addEventListener(
+    "ended",
+    function(){
+
+        opening.style.display = "none";
+
+        welcomeVideo.currentTime = 0;
+
+        const promise = welcomeVideo.play();
+
+        if(promise !== undefined){
+
+            promise.catch(() => {});
+
+        }
+
+    }
+);
+
+
+/* =========================
+   WELCOME ENDED
+========================= */
+
+welcomeVideo.addEventListener(
+    "ended",
+    function(){
+
+        familyVideo.currentTime = 0;
+
+        const promise = familyVideo.play();
+
+        if(promise !== undefined){
+
+            promise.catch(() => {});
+
+        }
+
+    }
+);
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+musicToggle.addEventListener(
+    "click",
+    function(){
+
+        if(music.muted){
+
+            music.muted = false;
+            musicToggle.textContent = "♪";
+
+        }else{
+
+            music.muted = true;
+            musicToggle.textContent = "🔇";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   GOLD BURST
+========================= */
+
+function createGoldBurst(){
+
+    const canvas = document.getElementById("sparkCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    for(let i = 0; i < 45; i++){
+
+        particles.push({
+
+            x:centerX,
+            y:centerY,
+
+            vx:(Math.random() - .5) * 5,
+            vy:(Math.random() - .5) * 5,
+
+            size:Math.random() * 2 + 1,
+
+            life:1
+
+        });
+
+    }
+
+    function animateBurst(){
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        let active = false;
+
+        particles.forEach(
+            p => {
+
+                if(p.life <= 0){
+                    return;
+                }
+
+                active = true;
+
+                p.x += p.vx;
+                p.y += p.vy;
+
+                p.life -= .025;
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    p.x,
+                    p.y,
+                    p.size,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fillStyle =
+                    "rgba(212,174,94," +
+                    p.life +
+                    ")";
+
+                ctx.fill();
+
+            }
+        );
+
+        if(active){
+
+            requestAnimationFrame(animateBurst);
+
+        }else{
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+        }
+
+    }
+
+    animateBurst();
+
+}
+
+
+/* =========================
+   DELICATE FALLING SPARKLES
+========================= */
+
+const sparkCanvas =
+    document.getElementById("sparkCanvas");
+
+const sparkCtx =
+    sparkCanvas.getContext("2d");
+
+let sparkles = [];
+
+function resizeSparkCanvas(){
+
+    sparkCanvas.width =
+        window.innerWidth;
+
+    sparkCanvas.height =
+        window.innerHeight;
+
+}
+
+resizeSparkCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeSparkCanvas
+);
+
+
+for(let i = 0; i < 45; i++){
+
+    sparkles.push({
+
+        x:Math.random() * window.innerWidth,
+
+        y:Math.random() * window.innerHeight,
+
+        size:Math.random() * 1.2 + .4,
+
+        speed:Math.random() * .35 + .15,
+
+        opacity:Math.random() * .55 + .25
+
+    });
+
+}
+
+
+function animateSparkles(){
+
+    sparkCtx.clearRect(
+        0,
+        0,
+        sparkCanvas.width,
+        sparkCanvas.height
+    );
+
+    sparkles.forEach(
+        s => {
+
+            s.y += s.speed;
+
+            if(s.y > sparkCanvas.height + 5){
+
+                s.y = -5;
+
+                s.x =
+                    Math.random() *
+                    sparkCanvas.width;
+
+            }
+
+            sparkCtx.beginPath();
+
+            sparkCtx.arc(
+                s.x,
+                s.y,
+                s.size,
+                0,
+                Math.PI * 2
+            );
+
+            sparkCtx.fillStyle =
+                "rgba(184,151,104," +
+                s.opacity +
+                ")";
+
+            sparkCtx.fill();
+
+        }
+    );
+
+    requestAnimationFrame(
+        animateSparkles
+    );
+
+}
+
+animateSparkles();
+
+
+/* =========================
+   FALLING PETALS / SPARKLES
+========================= */
+
+const petalCanvas =
+    document.getElementById("petalCanvas");
+
+const petalCtx =
+    petalCanvas.getContext("2d");
+
+let petals = [];
+
+function resizePetals(){
+
+    petalCanvas.width =
+        window.innerWidth;
+
+    petalCanvas.height =
+        window.innerHeight;
+
+}
+
+resizePetals();
+
+window.addEventListener(
+    "resize",
+    resizePetals
+);
+
+
+for(let i = 0; i < 22; i++){
+
+    petals.push({
+
+        x:Math.random() * window.innerWidth,
+
+        y:Math.random() * window.innerHeight,
+
+        size:Math.random() * 2 + .5,
+
+        speed:Math.random() * .35 + .1,
+
+        drift:(Math.random() - .5) * .25
+
+    });
+
+}
+
+
+function animatePetals(){
+
+    petalCtx.clearRect(
+        0,
+        0,
+        petalCanvas.width,
+        petalCanvas.height
+    );
+
+    petals.forEach(
+        p => {
+
+            p.y += p.speed;
+            p.x += p.drift;
+
+            if(p.y > petalCanvas.height + 5){
+
+                p.y = -5;
+
+                p.x =
+                    Math.random() *
+                    petalCanvas.width;
+
+            }
+
+            petalCtx.beginPath();
+
+            petalCtx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI * 2
+            );
+
+            petalCtx.fillStyle =
+                "rgba(212,174,94,.35)";
+
+            petalCtx.fill();
+
+        }
+    );
+
+    requestAnimationFrame(
+        animatePetals
+    );
+
+}
+
+animatePetals();
+
+
+/* =========================
+   FAMILY VIDEO OBSERVER
+========================= */
+
+const familyObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(entry.isIntersecting){
+
+                        const promise =
+                            familyVideo.play();
+
+                        if(
+                            promise !== undefined
+                        ){
+
+                            promise.catch(
+                                () => {}
+                            );
+
+                        }
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.35
+        }
+    );
+
+
+familyObserver.observe(
+    document.getElementById("familySection")
+);
+
+</script>
+
+</body>
+</html>
