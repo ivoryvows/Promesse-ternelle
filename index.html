@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 
 <meta property="og:title" content="Qabool Hai — Ali & Fatema">
 <meta property="og:description" content="A beautiful beginning of forever.">
-<meta property="og:image" content="https://i.postimg.cc/8kLFTSRf/IMG-8256.png">
+<meta property="og:image" content="https://files.catbox.moe/2ndsbt.jpeg">
 <meta property="og:url" content="https://ivoryvows.github.io/Whispering-blooms/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,11 +51,6 @@ body{
     }
 }
 
-
-/* =========================
-   CANVAS EFFECTS
-========================= */
-
 #petalCanvas{
     position:fixed;
     inset:0;
@@ -72,11 +68,6 @@ body{
     pointer-events:none;
     z-index:10000;
 }
-
-
-/* =========================
-   OPENING
-========================= */
 
 #opening{
     position:fixed;
@@ -125,11 +116,6 @@ body{
         0 0 15px rgba(255,255,255,.35);
 }
 
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
 #musicToggle{
     position:fixed;
     right:18px;
@@ -147,11 +133,6 @@ body{
     font-size:17px;
     box-shadow:0 3px 12px rgba(89,74,43,.15);
 }
-
-
-/* =========================
-   COMMON SECTION
-========================= */
 
 section{
     min-height:auto;
@@ -200,20 +181,13 @@ section{
     margin:15px auto;
 }
 
-
-/* =========================
-   FLOWERS
-========================= */
-
 @keyframes flowerFloat{
     0%{
         transform:translateY(0px) rotate(0deg);
     }
-
     50%{
         transform:translateY(-3px) rotate(1deg);
     }
-
     100%{
         transform:translateY(0px) rotate(0deg);
     }
@@ -241,11 +215,6 @@ section{
     z-index:2;
 }
 
-
-/* =========================
-   VIDEO FRAME
-========================= */
-
 .video-frame{
     width:350px;
     max-width:100%;
@@ -266,20 +235,23 @@ section{
     object-fit:cover;
 }
 
+/* WELCOME VIDEO FRAME - SHORTER */
+#welcomeSection .video-frame{
+    width:320px;
+    height:430px;
+    max-width:calc(100vw - 24px);
+}
 
-/* =========================
-   WELCOME
-========================= */
+#welcomeSection .video-frame video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
 #welcomeSection{
     padding-top:0;
     padding-bottom:35px;
 }
-
-
-/* =========================
-   BEAUTIFUL BEGINNING
-========================= */
 
 #beginningSection{
     min-height:auto;
@@ -305,19 +277,9 @@ section{
     margin:15px 0 5px 0;
 }
 
-
-/* =========================
-   FAMILY
-========================= */
-
 #familySection{
     min-height:auto;
 }
-
-
-/* =========================
-   MENU VIDEO
-========================= */
 
 #menuSection{
     min-height:auto;
@@ -345,11 +307,6 @@ section{
     height:auto;
     object-fit:cover;
 }
-
-
-/* =========================
-   TIMELINE
-========================= */
 
 #timelineSection{
     min-height:auto;
@@ -448,11 +405,6 @@ section{
     width:130px;
 }
 
-
-/* =========================
-   VENUE
-========================= */
-
 #venueSection{
     min-height:auto;
 }
@@ -514,11 +466,6 @@ section{
     background:#b89768;
     color:#5c4735;
 }
-
-
-/* =========================
-   DRESS CODE
-========================= */
 
 #dressSection{
     min-height:auto;
@@ -585,11 +532,6 @@ section{
 .dress-card .corner-flower-br{
     width:120px;
 }
-
-
-/* =========================
-   LAST FRAME
-========================= */
 
 #lastSection{
     min-height:auto;
@@ -690,11 +632,6 @@ section{
     z-index:5;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
 @media(max-width:420px){
 
     #tapText{
@@ -721,6 +658,12 @@ section{
         max-width:calc(100vw - 24px);
     }
 
+    #welcomeSection .video-frame{
+        width:320px;
+        height:430px;
+        max-width:calc(100vw - 24px);
+    }
+
     .menu-frame{
         max-width:calc(100vw - 70px);
     }
@@ -729,6 +672,7 @@ section{
         right:14px;
         bottom:14px;
     }
+
 }
 
 </style>
@@ -736,18 +680,8 @@ section{
 
 <body>
 
-
-<!-- =========================
-     BACKGROUND CANVASES
-========================= -->
-
 <canvas id="petalCanvas"></canvas>
 <canvas id="sparkCanvas"></canvas>
-
-
-<!-- =========================
-     OPENING
-========================= -->
 
 <div id="opening">
 
@@ -773,21 +707,11 @@ section{
 
 </div>
 
-
-<!-- =========================
-     MUSIC
-========================= -->
-
 <audio id="music" loop preload="auto">
-    <source src="./alikesath.mp3" type="audio/mpeg">
+    <source src="./french.mp3" type="audio/mpeg">
 </audio>
 
 <button id="musicToggle" type="button">♪</button>
-
-
-<!-- =========================
-     WELCOME VIDEO
-========================= -->
 
 <section id="welcomeSection">
 
@@ -804,11 +728,6 @@ section{
     </div>
 
 </section>
-
-
-<!-- =========================
-     BEAUTIFUL BEGINNING
-========================= -->
 
 <section id="beginningSection">
 
@@ -853,11 +772,6 @@ section{
 
 </section>
 
-
-<!-- =========================
-     FAMILY VIDEO
-========================= -->
-
 <section id="familySection">
 
     <div class="video-frame">
@@ -876,11 +790,6 @@ section{
     </div>
 
 </section>
-
-
-<!-- =========================
-     MENU VIDEO
-========================= -->
 
 <section id="menuSection">
 
@@ -916,11 +825,6 @@ section{
     </div>
 
 </section>
-
-
-<!-- =========================
-     TIMELINE
-========================= -->
 
 <section id="timelineSection">
 
@@ -976,11 +880,6 @@ section{
 
 </section>
 
-
-<!-- =========================
-     LOCATION MAP
-========================= -->
-
 <section id="venueSection">
 
     <div class="invitation-card venue-card">
@@ -1028,11 +927,6 @@ section{
     </div>
 
 </section>
-
-
-<!-- =========================
-     DRESS CODE
-========================= -->
 
 <section id="dressSection">
 
@@ -1090,11 +984,6 @@ section{
 
 </section>
 
-
-<!-- =========================
-     LAST FRAME
-========================= -->
-
 <section id="lastSection">
 
     <div class="last-card">
@@ -1144,12 +1033,7 @@ section{
 
 </section>
 
-
 <script>
-
-/* =========================
-   ELEMENTS
-========================= */
 
 const opening = document.getElementById("opening");
 const envelopePoster = document.getElementById("envelopePoster");
@@ -1163,20 +1047,10 @@ const musicToggle = document.getElementById("musicToggle");
 
 let invitationOpened = false;
 
-
-/* =========================
-   PRELOAD
-========================= */
-
 music.load();
 envelopeVideo.load();
 welcomeVideo.load();
 familyVideo.load();
-
-
-/* =========================
-   OPEN INVITATION
-========================= */
 
 function openInvitation(){
 
@@ -1186,20 +1060,13 @@ function openInvitation(){
 
     invitationOpened = true;
 
-    /* Start music immediately after user tap */
-
     music.currentTime = 0;
 
     const musicPromise = music.play();
 
     if(musicPromise !== undefined){
-
         musicPromise.catch(() => {});
-
     }
-
-
-    /* Show envelope video */
 
     envelopePoster.style.display = "none";
     envelopeVideo.style.display = "block";
@@ -1209,23 +1076,14 @@ function openInvitation(){
     const videoPromise = envelopeVideo.play();
 
     if(videoPromise !== undefined){
-
         videoPromise.catch(() => {});
-
     }
 
     tapOverlay.style.display = "none";
-
     musicToggle.style.display = "flex";
 
     createGoldBurst();
-
 }
-
-
-/* =========================
-   TAP / CLICK
-========================= */
 
 tapOverlay.addEventListener("click", openInvitation);
 
@@ -1243,11 +1101,6 @@ tapOverlay.addEventListener(
     }
 );
 
-
-/* =========================
-   ENVELOPE ENDED
-========================= */
-
 envelopeVideo.addEventListener(
     "ended",
     function(){
@@ -1259,18 +1112,11 @@ envelopeVideo.addEventListener(
         const promise = welcomeVideo.play();
 
         if(promise !== undefined){
-
             promise.catch(() => {});
-
         }
 
     }
 );
-
-
-/* =========================
-   WELCOME ENDED
-========================= */
 
 welcomeVideo.addEventListener(
     "ended",
@@ -1281,18 +1127,11 @@ welcomeVideo.addEventListener(
         const promise = familyVideo.play();
 
         if(promise !== undefined){
-
             promise.catch(() => {});
-
         }
 
     }
 );
-
-
-/* =========================
-   MUSIC BUTTON
-========================= */
 
 musicToggle.addEventListener(
     "click",
@@ -1312,11 +1151,6 @@ musicToggle.addEventListener(
 
     }
 );
-
-
-/* =========================
-   GOLD BURST
-========================= */
 
 function createGoldBurst(){
 
@@ -1415,11 +1249,6 @@ function createGoldBurst(){
 
 }
 
-
-/* =========================
-   DELICATE FALLING SPARKLES
-========================= */
-
 const sparkCanvas =
     document.getElementById("sparkCanvas");
 
@@ -1445,7 +1274,6 @@ window.addEventListener(
     resizeSparkCanvas
 );
 
-
 for(let i = 0; i < 45; i++){
 
     sparkles.push({
@@ -1463,7 +1291,6 @@ for(let i = 0; i < 45; i++){
     });
 
 }
-
 
 function animateSparkles(){
 
@@ -1517,11 +1344,6 @@ function animateSparkles(){
 
 animateSparkles();
 
-
-/* =========================
-   FALLING PETALS / SPARKLES
-========================= */
-
 const petalCanvas =
     document.getElementById("petalCanvas");
 
@@ -1547,7 +1369,6 @@ window.addEventListener(
     resizePetals
 );
 
-
 for(let i = 0; i < 22; i++){
 
     petals.push({
@@ -1565,7 +1386,6 @@ for(let i = 0; i < 22; i++){
     });
 
 }
-
 
 function animatePetals(){
 
@@ -1618,11 +1438,6 @@ function animatePetals(){
 
 animatePetals();
 
-
-/* =========================
-   FAMILY VIDEO OBSERVER
-========================= */
-
 const familyObserver =
     new IntersectionObserver(
         entries => {
@@ -1656,7 +1471,6 @@ const familyObserver =
         }
     );
 
-
 familyObserver.observe(
     document.getElementById("familySection")
 );
@@ -1665,3 +1479,4 @@ familyObserver.observe(
 
 </body>
 </html>
+
