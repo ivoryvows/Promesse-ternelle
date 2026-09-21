@@ -1115,6 +1115,10 @@ envelopeVideo.addEventListener(
             promise.catch(() => {});
         }
 
+        if(music.paused){
+            music.play().catch(() => {});
+        }
+
     }
 );
 
@@ -1128,6 +1132,10 @@ welcomeVideo.addEventListener(
 
         if(promise !== undefined){
             promise.catch(() => {});
+        }
+
+        if(music.paused){
+            music.play().catch(() => {});
         }
 
     }
