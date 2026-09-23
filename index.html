@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> Promesse - Ternelle — Danny & Rudy</title>
+<title>Promesse - Ternelle — Danny & Rudy</title>
 
-<meta property="og:title" content="Promesse - Ternelle — Danny & Rudy">
+<meta property="og:title" content="Promesse - éternelle — Danny & Rudy">
 <meta property="og:description" content="A beautiful beginning of forever.">
 <meta property="og:image" content="https://files.catbox.moe/2ndsbt.jpeg">
-<meta property="og:url" content="https://ivoryvows.github.io/Promesse-Ternelle/">
+<meta property="og:url" content="https://ivoryvows.github.io/Promesse-éternelle/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -302,6 +301,125 @@ section{
     min-height:auto;
     padding-top:8px;
     padding-bottom:8px;
+}
+
+/* SCRATCH REVEAL */
+
+#scratchSection{
+    min-height:auto;
+    padding-top:8px;
+    padding-bottom:8px;
+}
+
+.scratch-card{
+    background:#fdfbf7;
+    border:2px solid #b89768;
+    padding:28px 18px 30px;
+    width:350px;
+    max-width:100%;
+    border-radius:16px;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.scratch-small-title{
+    font-family:'Cinzel',serif;
+    color:#8c7853;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:4px;
+}
+
+.scratch-title{
+    color:#594a2b;
+    font-family:'Great Vibes',cursive;
+    font-size:32px;
+    font-weight:normal;
+    margin:0;
+}
+
+.scratch-divider{
+    width:35px;
+    height:1px;
+    background:#b89768;
+    margin:10px auto 12px;
+}
+
+.scratch-message{
+    color:#6b5c3f;
+    font-size:11px;
+    line-height:1.5;
+    font-style:italic;
+    margin:0 auto 16px;
+    max-width:275px;
+}
+
+.scratch-area{
+    position:relative;
+    width:100%;
+    max-width:310px;
+    margin:0 auto;
+    border:1px solid #b89768;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(89,74,43,.12);
+    background:#fdfbf7;
+}
+
+.scratch-image{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+#scratchCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+.scratch-complete{
+    display:none;
+    font-family:'Great Vibes',cursive;
+    color:#594a2b;
+    font-size:27px;
+    margin-top:12px;
+}
+
+.scratch-complete.show{
+    display:block;
+}
+
+.scratch-sparkle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#d4ae5e;
+    border-radius:50%;
+    pointer-events:none;
+    opacity:0;
+    animation:scratchSparkle 1.5s ease-out forwards;
+    box-shadow:0 0 5px rgba(212,174,94,.7);
+}
+
+@keyframes scratchSparkle{
+    0%{
+        opacity:0;
+        transform:scale(.4) translateY(4px);
+    }
+    30%{
+        opacity:.9;
+    }
+    100%{
+        opacity:0;
+        transform:scale(1) translateY(-12px);
+    }
 }
 
 /* MENU */
@@ -719,6 +837,10 @@ section{
         max-width:calc(100vw - 60px);
     }
 
+    .scratch-card{
+        max-width:calc(100vw - 20px);
+    }
+
     #musicToggle{
         right:14px;
         bottom:14px;
@@ -816,7 +938,7 @@ section{
         <div class="divider"></div>
 
         <div class="message-text">
-            Avec des cœurs remplis de joie, nos familles vous invitent à célébrer ce merveilleux commencement, fait de promesses, de bénédictions et d’un amour éternel.
+            Avec un cœur rempli de joie, nos familles vous invitent à célébrer avec nous le début d’un merveilleux commencement, fait de promesses, de bénédictions et d’un amour éternel.
         </div>
 
         <div class="couple-names">
@@ -850,6 +972,48 @@ section{
         >
             <source src="./family1.mp4" type="video/mp4">
         </video>
+
+    </div>
+
+</section>
+
+
+<!-- SCRATCH TO REVEAL -->
+
+<section id="scratchSection">
+
+    <div class="scratch-card">
+
+        <div class="scratch-small-title">
+            Une date à retenir
+        </div>
+
+        <div class="scratch-title">
+            Notre date
+        </div>
+
+        <div class="scratch-divider"></div>
+
+        <div class="scratch-message">
+            Grattez délicatement pour découvrir le jour où notre histoire devient éternelle.
+        </div>
+
+        <div class="scratch-area" id="scratchArea">
+
+            <img
+                class="scratch-image"
+                id="scratchRevealImage"
+                src="https://i.ibb.co/FkkwYxQC/IMG-8219.png"
+                alt="19 Décembre 2026"
+            >
+
+            <canvas id="scratchCanvas"></canvas>
+
+        </div>
+
+        <div class="scratch-complete" id="scratchComplete">
+            19 Décembre 2026
+        </div>
 
     </div>
 
@@ -964,13 +1128,13 @@ section{
         >
 
         <div class="sub-heading">
-            The Venue
+            LIEU DE L’EVENEMENT
         </div>
 
         <div class="venue-box">
 
             <div class="venue-title-label">
-                The Venue
+                LIEU DE L’EVENEMENT
             </div>
 
             <div class="venue-name">
@@ -1046,6 +1210,14 @@ section{
                 class="color-circle"
                 style="background-color:#A27B5A;"
                 title="Caramel Tan">
+            </div>
+
+            <!-- BLACK CIRCLE -->
+
+            <div
+                class="color-circle"
+                style="background-color:#000000;"
+                title="Black">
             </div>
 
         </div>
@@ -1757,9 +1929,482 @@ familyObserver.observe(
     document.getElementById("familySection")
 );
 
+
+/* SCRATCH TO REVEAL */
+
+const scratchCanvas =
+    document.getElementById("scratchCanvas");
+
+const scratchArea =
+    document.getElementById("scratchArea");
+
+const scratchComplete =
+    document.getElementById("scratchComplete");
+
+const scratchCtx =
+    scratchCanvas.getContext("2d");
+
+let isScratching = false;
+let scratchFinished = false;
+let scratchedPixels = 0;
+
+
+/* SET SCRATCH CANVAS */
+
+function resizeScratchCanvas(){
+
+    const rect =
+        scratchArea.getBoundingClientRect();
+
+    const dpr =
+        window.devicePixelRatio || 1;
+
+    scratchCanvas.width =
+        rect.width * dpr;
+
+    scratchCanvas.height =
+        rect.height * dpr;
+
+    scratchCanvas.style.width =
+        rect.width + "px";
+
+    scratchCanvas.style.height =
+        rect.height + "px";
+
+    scratchCtx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    drawScratchLayer();
+
+}
+
+
+/* GOLDEN SCRATCH LAYER */
+
+function drawScratchLayer(){
+
+    const width =
+        scratchArea.clientWidth;
+
+    const height =
+        scratchArea.clientHeight;
+
+    scratchCtx.globalCompositeOperation =
+        "source-over";
+
+    scratchCtx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    scratchCtx.fillStyle =
+        "#d8bf91";
+
+    scratchCtx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    /* soft luxury texture */
+
+    for(let i = 0; i < 140; i++){
+
+        const x =
+            Math.random() * width;
+
+        const y =
+            Math.random() * height;
+
+        const size =
+            Math.random() * 1.5 + .3;
+
+        scratchCtx.beginPath();
+
+        scratchCtx.arc(
+            x,
+            y,
+            size,
+            0,
+            Math.PI * 2
+        );
+
+        scratchCtx.fillStyle =
+            "rgba(255,248,225," +
+            (Math.random() * .45 + .2) +
+            ")";
+
+        scratchCtx.fill();
+
+    }
+
+    scratchCtx.globalCompositeOperation =
+        "destination-out";
+
+}
+
+
+/* SCRATCH FUNCTION */
+
+function scratchAt(x,y){
+
+    if(scratchFinished){
+        return;
+    }
+
+    scratchCtx.beginPath();
+
+    scratchCtx.arc(
+        x,
+        y,
+        22,
+        0,
+        Math.PI * 2
+    );
+
+    scratchCtx.fill();
+
+    scratchedPixels++;
+
+    if(scratchedPixels % 3 === 0){
+
+        createScratchSparkle(x,y);
+
+    }
+
+    if(scratchedPixels > 80){
+
+        checkScratchProgress();
+
+    }
+
+}
+
+
+/* CHECK HOW MUCH IS REVEALED */
+
+function checkScratchProgress(){
+
+    const width =
+        scratchCanvas.width;
+
+    const height =
+        scratchCanvas.height;
+
+    const imageData =
+        scratchCtx.getImageData(
+            0,
+            0,
+            width,
+            height
+        );
+
+    let transparent =
+        0;
+
+    const total =
+        imageData.data.length / 4;
+
+    for(
+        let i = 3;
+        i < imageData.data.length;
+        i += 4
+    ){
+
+        if(imageData.data[i] < 100){
+
+            transparent++;
+
+        }
+
+    }
+
+    const percentage =
+        transparent / total;
+
+    if(percentage > .55){
+
+        finishScratch();
+
+    }
+
+}
+
+
+/* FINISH SCRATCH */
+
+function finishScratch(){
+
+    if(scratchFinished){
+        return;
+    }
+
+    scratchFinished = true;
+
+    scratchCtx.clearRect(
+        0,
+        0,
+        scratchCanvas.width,
+        scratchCanvas.height
+    );
+
+    scratchComplete.classList.add("show");
+
+    createFinalScratchSparkles();
+
+}
+
+
+/* SMALL SPARKLES */
+
+function createScratchSparkle(x,y){
+
+    const sparkle =
+        document.createElement("span");
+
+    sparkle.className =
+        "scratch-sparkle";
+
+    sparkle.style.left =
+        x + "px";
+
+    sparkle.style.top =
+        y + "px";
+
+    scratchArea.appendChild(
+        sparkle
+    );
+
+    setTimeout(
+        () => sparkle.remove(),
+        1500
+    );
+
+}
+
+
+/* FINAL SPARKLES */
+
+function createFinalScratchSparkles(){
+
+    for(let i = 0; i < 18; i++){
+
+        setTimeout(
+            () => {
+
+                const x =
+                    Math.random() *
+                    scratchArea.clientWidth;
+
+                const y =
+                    Math.random() *
+                    scratchArea.clientHeight;
+
+                createScratchSparkle(
+                    x,
+                    y
+                );
+
+            },
+            i * 80
+        );
+
+    }
+
+}
+
+
+/* POINTER POSITION */
+
+function getScratchPosition(e){
+
+    const rect =
+        scratchCanvas.getBoundingClientRect();
+
+    let clientX;
+    let clientY;
+
+    if(e.touches && e.touches.length){
+
+        clientX =
+            e.touches[0].clientX;
+
+        clientY =
+            e.touches[0].clientY;
+
+    }else{
+
+        clientX =
+            e.clientX;
+
+        clientY =
+            e.clientY;
+
+    }
+
+    return {
+
+        x:
+            clientX - rect.left,
+
+        y:
+            clientY - rect.top
+
+    };
+
+}
+
+
+/* MOUSE */
+
+scratchCanvas.addEventListener(
+    "mousedown",
+    function(e){
+
+        isScratching = true;
+
+        const pos =
+            getScratchPosition(e);
+
+        scratchAt(
+            pos.x,
+            pos.y
+        );
+
+    }
+);
+
+
+scratchCanvas.addEventListener(
+    "mousemove",
+    function(e){
+
+        if(!isScratching){
+            return;
+        }
+
+        const pos =
+            getScratchPosition(e);
+
+        scratchAt(
+            pos.x,
+            pos.y
+        );
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    function(){
+
+        isScratching = false;
+
+    }
+);
+
+
+/* TOUCH */
+
+scratchCanvas.addEventListener(
+    "touchstart",
+    function(e){
+
+        e.preventDefault();
+
+        isScratching = true;
+
+        const pos =
+            getScratchPosition(e);
+
+        scratchAt(
+            pos.x,
+            pos.y
+        );
+
+    },
+    {
+        passive:false
+    }
+);
+
+
+scratchCanvas.addEventListener(
+    "touchmove",
+    function(e){
+
+        e.preventDefault();
+
+        if(!isScratching){
+            return;
+        }
+
+        const pos =
+            getScratchPosition(e);
+
+        scratchAt(
+            pos.x,
+            pos.y
+        );
+
+    },
+    {
+        passive:false
+    }
+);
+
+
+scratchCanvas.addEventListener(
+    "touchend",
+    function(){
+
+        isScratching = false;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* INITIALIZE SCRATCH */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        setTimeout(
+            resizeScratchCanvas,
+            200
+        );
+
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    function(){
+
+        setTimeout(
+            resizeScratchCanvas,
+            100
+        );
+
+    }
+);
+
 </script>
 
 </body>
 </html>
-
-
