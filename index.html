@@ -575,6 +575,138 @@ section{
 }
 
 
+/* ================= COUNTDOWN ================= */
+
+#countdownSection{
+    min-height:auto;
+    padding:14px 12px;
+}
+
+.countdown-card{
+    width:350px;
+    max-width:100%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(250,242,220,.97)
+        );
+    border:1.5px solid #b89768;
+    border-radius:20px;
+    padding:34px 18px 32px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:
+        0 8px 30px rgba(184,151,104,.20),
+        inset 0 0 30px rgba(255,255,255,.7);
+}
+
+.countdown-glow{
+    position:absolute;
+    width:180px;
+    height:180px;
+    left:-90px;
+    bottom:-100px;
+    border-radius:50%;
+    background:rgba(212,174,94,.13);
+    filter:blur(5px);
+    pointer-events:none;
+}
+
+.countdown-small-title{
+    color:#8c7853;
+    font-family:'Cinzel',serif;
+    font-size:9px;
+    letter-spacing:2.5px;
+    margin-bottom:6px;
+}
+
+.countdown-title{
+    margin:0;
+    color:#594a2b;
+    font-family:'Great Vibes',cursive;
+    font-size:34px;
+    font-weight:normal;
+}
+
+.countdown-divider{
+    width:65px;
+    height:1px;
+    background:#b89768;
+    margin:10px auto 8px;
+    position:relative;
+}
+
+.countdown-divider span{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:#fbf1d9;
+    color:#b89768;
+    padding:0 7px;
+    font-size:9px;
+}
+
+.countdown-subtitle{
+    color:#6b5c3f;
+    font-family:'Playfair Display',serif;
+    font-size:10.5px;
+    font-style:italic;
+    margin:0 0 22px;
+}
+
+.countdown-boxes{
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    width:100%;
+}
+
+.countdown-box{
+    flex:1;
+    min-width:0;
+    padding:13px 4px 11px;
+    border:1px solid #d5c3a2;
+    border-radius:11px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.82),
+            rgba(248,237,207,.72)
+        );
+    box-shadow:
+        0 3px 10px rgba(184,151,104,.12),
+        inset 0 0 12px rgba(255,255,255,.5);
+}
+
+.countdown-number{
+    display:block;
+    color:#594a2b;
+    font-family:'Cinzel',serif;
+    font-size:20px;
+    font-weight:600;
+    line-height:1;
+    margin-bottom:7px;
+}
+
+.countdown-label{
+    display:block;
+    color:#8c7853;
+    font-family:'Cinzel',serif;
+    font-size:6.5px;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+
+.countdown-bottom{
+    color:#b89768;
+    font-size:10px;
+    margin-top:18px;
+}
+
+
 /* ================= MENU ================= */
 
 #menuSection{
@@ -1084,7 +1216,8 @@ section{
 
     .invitation-card,
     .dress-card,
-    .frenchScratchCard{
+    .frenchScratchCard,
+    .countdown-card{
         width:350px;
         max-width:calc(100vw - 24px);
     }
@@ -1102,6 +1235,19 @@ section{
 
     .video-frame{
         max-width:calc(100vw - 24px);
+    }
+
+    .countdown-boxes{
+        gap:5px;
+    }
+
+    .countdown-number{
+        font-size:17px;
+    }
+
+    .countdown-label{
+        font-size:6px;
+        letter-spacing:.5px;
     }
 
     #musicToggle{
@@ -1278,7 +1424,6 @@ section{
         notre date spéciale
     </p>
 
-
     <div class="scratchBox">
 
         <div class="scratchReveal">
@@ -1299,22 +1444,103 @@ section{
 
         </div>
 
-
         <canvas
             id="frenchScratchCanvas">
         </canvas>
 
-
         <div id="scratchSparkles"></div>
 
     </div>
-
 
     <div class="scratchBottomText">
         Un petit secret à découvrir...
     </div>
 
     <div class="scratchBottomDecor">
+        ✦　◇　✦
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= COUNTDOWN ================= -->
+
+<section id="countdownSection">
+
+<div class="countdown-card">
+
+    <div class="countdown-glow"></div>
+
+    <div class="countdown-small-title">
+        ✦ NOTRE HISTOIRE ✦
+    </div>
+
+    <h2 class="countdown-title">
+        Le compte à rebours commence…
+    </h2>
+
+    <div class="countdown-divider">
+        <span>◇</span>
+    </div>
+
+    <p class="countdown-subtitle">
+        Notre éternité commence bientôt
+    </p>
+
+    <div class="countdown-boxes">
+
+        <div class="countdown-box">
+            <span
+                class="countdown-number"
+                id="countdownDays">
+                00
+            </span>
+
+            <span class="countdown-label">
+                Days
+            </span>
+        </div>
+
+        <div class="countdown-box">
+            <span
+                class="countdown-number"
+                id="countdownHours">
+                00
+            </span>
+
+            <span class="countdown-label">
+                Hours
+            </span>
+        </div>
+
+        <div class="countdown-box">
+            <span
+                class="countdown-number"
+                id="countdownMinutes">
+                00
+            </span>
+
+            <span class="countdown-label">
+                Minutes
+            </span>
+        </div>
+
+        <div class="countdown-box">
+            <span
+                class="countdown-number"
+                id="countdownSeconds">
+                00
+            </span>
+
+            <span class="countdown-label">
+                Seconds
+            </span>
+        </div>
+
+    </div>
+
+    <div class="countdown-bottom">
         ✦　◇　✦
     </div>
 
@@ -1395,7 +1621,6 @@ section{
 
         </div>
 
-
         <div class="timeline-item">
 
             <div class="timeline-time">
@@ -1408,7 +1633,6 @@ section{
 
         </div>
 
-
         <div class="timeline-item">
 
             <div class="timeline-time">
@@ -1420,7 +1644,6 @@ section{
             </div>
 
         </div>
-
 
         <div class="timeline-item">
 
@@ -1435,7 +1658,6 @@ section{
         </div>
 
     </div>
-
 
     <img
         src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
@@ -1642,7 +1864,6 @@ section{
 
         <div class="rsvp-divider"></div>
 
-
         <form id="rsvpForm">
 
             <label
@@ -1659,7 +1880,6 @@ section{
                 placeholder="Écrivez votre nom"
                 required
             >
-
 
             <label class="rsvp-label">
                 Serez-vous parmi nous ?
@@ -1683,7 +1903,6 @@ section{
 
                 </div>
 
-
                 <div class="rsvp-radio">
 
                     <input
@@ -1700,67 +1919,6 @@ section{
                 </div>
 
             </div>
-
-
-            <label
-                class="rsvp-label"
-                for="guestCount">
-                Nombre d'invités
-            </label>
-
-            <select
-                class="rsvp-select"
-                id="guestCount"
-                name="guests"
-                required
-            >
-
-                <option value="" selected disabled>
-                    Sélectionnez le nombre
-                </option>
-
-                <option value="1">
-                    1 invité
-                </option>
-
-                <option value="2">
-                    2 invités
-                </option>
-
-                <option value="3">
-                    3 invités
-                </option>
-
-                <option value="4">
-                    4 invités
-                </option>
-
-                <option value="5">
-                    5 invités
-                </option>
-
-                <option value="6">
-                    6 invités
-                </option>
-
-                <option value="7">
-                    7 invités
-                </option>
-
-                <option value="8">
-                    8 invités
-                </option>
-
-                <option value="9">
-                    9 invités
-                </option>
-
-                <option value="10">
-                    10 invités
-                </option>
-
-            </select>
-
 
             <label
                 class="rsvp-label"
@@ -1817,14 +1975,12 @@ section{
 
             </select>
 
-
             <button
                 type="submit"
                 class="rsvp-submit"
                 id="rsvpSubmit">
                 CONFIRMER MA RÉPONSE
             </button>
-
 
             <div
                 id="rsvpMessage"
@@ -1899,7 +2055,6 @@ function openInvitation(event){
 
     invitationOpened = true;
 
-
     music.volume = 1;
     music.muted = false;
 
@@ -1925,12 +2080,9 @@ function openInvitation(event){
 
         });
 
-
     musicToggle.classList.add("show");
 
-
     openingBurst();
-
 
     envelopePoster.style.display = "none";
 
@@ -1943,7 +2095,6 @@ function openInvitation(event){
     try{
         envelopeVideo.currentTime = 0;
     }catch(e){}
-
 
     const videoPromise =
         envelopeVideo.play();
@@ -2188,7 +2339,6 @@ function drawSparks(){
         sparkCanvas.height
     );
 
-
     for(
         let i=sparks.length-1;
         i>=0;
@@ -2206,7 +2356,6 @@ function drawSparks(){
 
         s.life -= s.decay;
 
-
         if(s.life<=0){
 
             sparks.splice(i,1);
@@ -2214,7 +2363,6 @@ function drawSparks(){
             continue;
 
         }
-
 
         sparkCtx.beginPath();
 
@@ -2234,7 +2382,6 @@ function drawSparks(){
         sparkCtx.fill();
 
     }
-
 
     requestAnimationFrame(
         drawSparks
@@ -2323,7 +2470,6 @@ function drawPetals(){
         petalCanvas.height
     );
 
-
     petals.forEach(
         function(p){
 
@@ -2333,7 +2479,6 @@ function drawPetals(){
 
             p.rotation +=
                 p.rotationSpeed;
-
 
             if(
                 p.y >
@@ -2348,7 +2493,6 @@ function drawPetals(){
 
             }
 
-
             if(
                 p.x >
                 window.innerWidth+10
@@ -2358,7 +2502,6 @@ function drawPetals(){
 
             }
 
-
             if(p.x < -10){
 
                 p.x =
@@ -2366,23 +2509,18 @@ function drawPetals(){
 
             }
 
-
             petalCtx.save();
-
 
             petalCtx.translate(
                 p.x,
                 p.y
             );
 
-
             petalCtx.rotate(
                 p.rotation
             );
 
-
             petalCtx.beginPath();
-
 
             petalCtx.ellipse(
                 0,
@@ -2394,18 +2532,15 @@ function drawPetals(){
                 Math.PI*2
             );
 
-
             petalCtx.fillStyle =
                 p.color;
 
             petalCtx.fill();
 
-
             petalCtx.restore();
 
         }
     );
-
 
     requestAnimationFrame(
         drawPetals
@@ -2488,20 +2623,17 @@ function setupScratch(){
     const dpr =
         window.devicePixelRatio || 1;
 
-
     frenchScratchCanvas.width =
         rect.width * dpr;
 
     frenchScratchCanvas.height =
         rect.height * dpr;
 
-
     frenchScratchCanvas.style.width =
         rect.width + "px";
 
     frenchScratchCanvas.style.height =
         rect.height + "px";
-
 
     scratchCtx.setTransform(
         dpr,
@@ -2512,10 +2644,8 @@ function setupScratch(){
         0
     );
 
-
     scratchCtx.globalCompositeOperation =
         "source-over";
-
 
     const gradient =
         scratchCtx.createLinearGradient(
@@ -2524,7 +2654,6 @@ function setupScratch(){
             rect.width,
             rect.height
         );
-
 
     gradient.addColorStop(
         0,
@@ -2546,7 +2675,6 @@ function setupScratch(){
         "#ead5a5"
     );
 
-
     scratchCtx.fillStyle =
         gradient;
 
@@ -2556,7 +2684,6 @@ function setupScratch(){
         rect.width,
         rect.height
     );
-
 
     const shine =
         scratchCtx.createRadialGradient(
@@ -2568,7 +2695,6 @@ function setupScratch(){
             rect.width
         );
 
-
     shine.addColorStop(
         0,
         "rgba(255,255,255,.55)"
@@ -2578,7 +2704,6 @@ function setupScratch(){
         1,
         "rgba(255,255,255,0)"
     );
-
 
     scratchCtx.fillStyle =
         shine;
@@ -2590,7 +2715,6 @@ function setupScratch(){
         rect.height
     );
 
-
     scratchCtx.fillStyle =
         "rgba(91,67,38,.78)";
 
@@ -2600,10 +2724,8 @@ function setupScratch(){
     scratchCtx.textBaseline =
         "middle";
 
-
     scratchCtx.font =
         "600 10px Cinzel, serif";
-
 
     scratchCtx.fillText(
         "GRATTEZ ICI",
@@ -2611,10 +2733,8 @@ function setupScratch(){
         rect.height / 2 - 8
     );
 
-
     scratchCtx.font =
         "italic 11px 'Playfair Display', serif";
-
 
     scratchCtx.fillText(
         "pour révéler notre date",
@@ -2634,14 +2754,11 @@ function scratch(event){
         return;
     }
 
-
     const rect =
         frenchScratchCanvas.getBoundingClientRect();
 
-
     let x;
     let y;
-
 
     if(
         event.touches &&
@@ -2668,13 +2785,10 @@ function scratch(event){
 
     }
 
-
     scratchCtx.globalCompositeOperation =
         "destination-out";
 
-
     scratchCtx.beginPath();
-
 
     scratchCtx.arc(
         x,
@@ -2684,15 +2798,12 @@ function scratch(event){
         Math.PI * 2
     );
 
-
     scratchCtx.fill();
-
 
     createScratchSparkle(
         x,
         y
     );
-
 
     checkScratchProgress();
 
@@ -2791,12 +2902,10 @@ function checkScratchProgress(){
             frenchScratchCanvas.height
         );
 
-
     let transparent = 0;
 
     const total =
         imageData.data.length / 4;
-
 
     for(
         let i=3;
@@ -2814,11 +2923,9 @@ function checkScratchProgress(){
 
     }
 
-
     const scratched =
         transparent /
         (total / 12);
-
 
     if(
         scratched > .45 &&
@@ -2836,22 +2943,17 @@ function revealDate(){
 
     revealed = true;
 
-
     scratchBox.classList.add(
         "revealed"
     );
 
-
     frenchScratchCanvas.style.transition =
         "opacity .8s ease";
-
 
     frenchScratchCanvas.style.opacity =
         "0";
 
-
     createFinalSparkles();
-
 
     setTimeout(
         function(){
@@ -2876,35 +2978,28 @@ function createScratchSparkle(
             "span"
         );
 
-
     sparkle.className =
         "scratchSpark";
-
 
     sparkle.style.left =
         x + "px";
 
-
     sparkle.style.top =
         y + "px";
-
 
     sparkle.style.setProperty(
         "--x",
         (Math.random() * 80 - 40) + "px"
     );
 
-
     sparkle.style.setProperty(
         "--y",
         (Math.random() * 80 - 40) + "px"
     );
 
-
     scratchSparkles.appendChild(
         sparkle
     );
-
 
     setTimeout(
         function(){
@@ -2923,7 +3018,6 @@ function createFinalSparkles(){
     const box =
         scratchBox.getBoundingClientRect();
 
-
     for(
         let i=0;
         i<32;
@@ -2935,10 +3029,8 @@ function createFinalSparkles(){
                 "span"
             );
 
-
         sparkle.className =
             "scratchSpark";
-
 
         sparkle.style.left =
             (
@@ -2946,34 +3038,28 @@ function createFinalSparkles(){
                 (Math.random() - .5) * 180
             ) + "px";
 
-
         sparkle.style.top =
             (
                 box.height / 2 +
                 (Math.random() - .5) * 100
             ) + "px";
 
-
         sparkle.style.setProperty(
             "--x",
             (Math.random() * 130 - 65) + "px"
         );
-
 
         sparkle.style.setProperty(
             "--y",
             (Math.random() * 130 - 65) + "px"
         );
 
-
         sparkle.style.animationDuration =
             (.8 + Math.random() * .8) + "s";
-
 
         scratchSparkles.appendChild(
             sparkle
         );
-
 
         setTimeout(
             function(){
@@ -3000,6 +3086,100 @@ window.addEventListener(
         }
 
     }
+);
+
+
+/* =========================================================
+   COUNTDOWN — 19 DECEMBER 2026
+========================================================= */
+
+const countdownTarget =
+    new Date("2026-12-19T00:00:00+01:00").getTime();
+
+const countdownDays =
+    document.getElementById("countdownDays");
+
+const countdownHours =
+    document.getElementById("countdownHours");
+
+const countdownMinutes =
+    document.getElementById("countdownMinutes");
+
+const countdownSeconds =
+    document.getElementById("countdownSeconds");
+
+
+function updateCountdown(){
+
+    const now =
+        new Date().getTime();
+
+    let distance =
+        countdownTarget - now;
+
+
+    if(distance <= 0){
+
+        countdownDays.textContent = "00";
+        countdownHours.textContent = "00";
+        countdownMinutes.textContent = "00";
+        countdownSeconds.textContent = "00";
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (distance %
+            (1000 * 60)) /
+            1000
+        );
+
+
+    countdownDays.textContent =
+        String(days).padStart(2,"0");
+
+    countdownHours.textContent =
+        String(hours).padStart(2,"0");
+
+    countdownMinutes.textContent =
+        String(minutes).padStart(2,"0");
+
+    countdownSeconds.textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
 );
 
 
@@ -3036,14 +3216,11 @@ rsvpForm.addEventListener(
                 'input[name="attending"]:checked'
             );
 
-        const guests =
-            document.getElementById("guestCount").value;
-
         const meal =
             document.getElementById("mealPreference").value;
 
 
-        if(!name || !attending || !guests || !meal){
+        if(!name || !attending || !meal){
 
             rsvpMessage.textContent =
                 "Veuillez remplir tous les champs.";
@@ -3064,20 +3241,18 @@ rsvpForm.addEventListener(
         const formData =
             new URLSearchParams();
 
+
         formData.append(
             "name",
             name
         );
+
 
         formData.append(
             "attending",
             attending.value
         );
 
-        formData.append(
-            "guests",
-            guests
-        );
 
         formData.append(
             "meal",
