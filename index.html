@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -901,6 +902,178 @@ section{
 }
 
 
+/* ================= RSVP ================= */
+
+#rsvpSection{
+    min-height:auto;
+    padding:8px 12px 40px;
+}
+
+.rsvp-card{
+    width:360px;
+    max-width:100%;
+    background:#fdfbf7;
+    border:2px solid #b89768;
+    border-radius:16px;
+    padding:38px 24px 45px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 4px 20px rgba(184,151,104,.2);
+}
+
+.rsvp-card .corner-flower-tl{
+    width:115px;
+}
+
+.rsvp-card .corner-flower-br{
+    width:125px;
+}
+
+.rsvp-content{
+    position:relative;
+    z-index:3;
+}
+
+.rsvp-small-title{
+    font-family:'Cinzel',serif;
+    font-size:9px;
+    color:#8c7853;
+    letter-spacing:2.5px;
+    margin-bottom:6px;
+}
+
+.rsvp-title{
+    margin:0;
+    color:#594a2b;
+    font-family:'Great Vibes',cursive;
+    font-size:40px;
+    font-weight:normal;
+}
+
+.rsvp-divider{
+    width:55px;
+    height:1px;
+    background:#b89768;
+    margin:12px auto 24px;
+}
+
+.rsvp-label{
+    display:block;
+    text-align:left;
+    color:#594a2b;
+    font-family:'Cinzel',serif;
+    font-size:9px;
+    letter-spacing:1.3px;
+    margin:0 0 7px 4px;
+}
+
+.rsvp-field,
+.rsvp-select{
+    width:100%;
+    height:43px;
+    border:1px solid #d5c3a2;
+    border-radius:10px;
+    background:rgba(255,255,255,.65);
+    color:#594a2b;
+    padding:0 12px;
+    font-family:'Playfair Display',serif;
+    font-size:12px;
+    outline:none;
+    margin-bottom:17px;
+}
+
+.rsvp-field:focus,
+.rsvp-select:focus{
+    border-color:#b89768;
+    box-shadow:0 0 0 2px rgba(184,151,104,.10);
+}
+
+.rsvp-radio-group{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:19px;
+}
+
+.rsvp-radio{
+    position:relative;
+}
+
+.rsvp-radio input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.rsvp-radio label{
+    display:block;
+    min-width:100px;
+    padding:10px 12px;
+    border:1px solid #d5c3a2;
+    border-radius:25px;
+    background:#fffaf0;
+    color:#594a2b;
+    font-family:'Playfair Display',serif;
+    font-size:11px;
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.rsvp-radio input:checked + label{
+    background:#594a2b;
+    border-color:#594a2b;
+    color:#fffaf0;
+}
+
+.meal-note{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    color:#6b5c3f;
+    font-size:10.5px;
+    line-height:1.4;
+    margin:-4px 0 10px;
+}
+
+.rsvp-submit{
+    width:100%;
+    border:none;
+    background:#594a2b;
+    color:#fffaf0;
+    padding:12px 18px;
+    border-radius:25px;
+    font-family:'Cinzel',serif;
+    font-size:9px;
+    letter-spacing:1.3px;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(89,74,43,.20);
+    transition:.25s ease;
+}
+
+.rsvp-submit:active{
+    transform:scale(.98);
+}
+
+.rsvp-submit:disabled{
+    opacity:.6;
+    cursor:wait;
+}
+
+.rsvp-message{
+    display:none;
+    margin-top:18px;
+    color:#6d3d3d;
+    font-family:'Playfair Display',serif;
+    font-size:11px;
+    line-height:1.5;
+    font-style:italic;
+}
+
+.rsvp-message.show{
+    display:block;
+}
+
+
 /* ================= MOBILE ================= */
 
 @media(max-width:420px){
@@ -921,7 +1094,8 @@ section{
         max-width:calc(100vw - 24px);
     }
 
-    .last-card{
+    .last-card,
+    .rsvp-card{
         width:360px;
         max-width:calc(100vw - 24px);
     }
@@ -938,520 +1112,753 @@ section{
 }
 
 </style>
-</head>
 
+</head>
 
 <body>
 
-
 <!-- ================= BACKGROUND ================= -->
 
-<canvas id="petalCanvas"></canvas>
-<canvas id="sparkCanvas"></canvas>
-
+<canvas id="petalCanvas"></canvas> <canvas id="sparkCanvas"></canvas>
 
 <!-- ================= MUSIC ================= -->
 
 <audio
-    id="music"
-    src="./french.mp3"
-    preload="auto"
-    loop>
-</audio>
+ id="music"
+ src="./french.mp3"
+ preload="auto"
+ loop> </audio>
 
 <button
-    id="musicToggle"
-    aria-label="Mute music">
-    ♪
-</button>
-
+ id="musicToggle"
+ aria-label="Mute music">
+♪ </button>
 
 <!-- ================= OPENING ================= -->
 
 <div id="opening">
 
-    <img
-        id="envelopePoster"
-        src="envelope pic.jpg"
-        alt="Wedding Invitation"
-    >
+```
+<img
+    id="envelopePoster"
+    src="envelope pic.jpg"
+    alt="Wedding Invitation"
+>
 
-    <video
-        id="envelopeVideo"
-        muted
-        playsinline
-        webkit-playsinline
-        preload="auto"
-    >
-        <source src="./envelope.mp4" type="video/mp4">
-    </video>
+<video
+    id="envelopeVideo"
+    muted
+    playsinline
+    webkit-playsinline
+    preload="auto"
+>
+    <source src="./envelope.mp4" type="video/mp4">
+</video>
 
-    <div id="tapOverlay">
+<div id="tapOverlay">
 
-        <div id="tapText">
-            Tap to Open
-        </div>
-
+    <div id="tapText">
+        Tap to Open
     </div>
 
 </div>
+```
 
+</div>
 
 <!-- ================= WELCOME ================= -->
 
 <section id="welcomeSection">
 
-    <div class="video-frame">
+```
+<div class="video-frame">
 
-        <video
-            id="welcomeVideo"
-            playsinline
-            preload="auto"
-        >
-            <source src="./welcome1.mp4" type="video/mp4">
-        </video>
+    <video
+        id="welcomeVideo"
+        playsinline
+        preload="auto"
+    >
+        <source src="./welcome1.mp4" type="video/mp4">
+    </video>
 
-    </div>
+</div>
+```
 
 </section>
-
 
 <!-- ================= BEAUTIFUL BEGINNING ================= -->
 
 <section id="beginningSection">
 
-    <div class="invitation-card beginning-card">
+```
+<div class="invitation-card beginning-card">
 
-        <img
-            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
-            alt="Top Floral"
-            class="corner-flower-tl"
-        >
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Floral"
+        class="corner-flower-tl"
+    >
 
-        <div style="
-            font-family:'Playfair Display',serif;
-            font-size:16px;
-            color:#594a2b;
-            margin-bottom:2px;
-        ">
-            Un nouveau chapitre
-        </div>
-
-        <div class="section-title">
-            Un merveilleux commencement
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="message-text">
-            Avec un cœur rempli de joie, nos familles vous invitent à célébrer avec nous le début d’un merveilleux commencement, fait de promesses, de bénédictions et d’un amour éternel.
-        </div>
-
-        <div class="couple-names">
-            Danny &amp; Rudy
-        </div>
-
-        <img
-            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
-            alt="Bottom Floral"
-            class="corner-flower-br"
-        >
-
+    <div style="
+        font-family:'Playfair Display',serif;
+        font-size:16px;
+        color:#594a2b;
+        margin-bottom:2px;
+    ">
+        Un nouveau chapitre
     </div>
 
-</section>
+    <div class="section-title">
+        Un merveilleux commencement
+    </div>
 
+    <div class="divider"></div>
+
+    <div class="message-text">
+        Avec un cœur rempli de joie, nos familles vous invitent à célébrer avec nous le début d’un merveilleux commencement, fait de promesses, de bénédictions et d’un amour éternel.
+    </div>
+
+    <div class="couple-names">
+        Danny &amp; Rudy
+    </div>
+
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Floral"
+        class="corner-flower-br"
+    >
+
+</div>
+```
+
+</section>
 
 <!-- ================= FAMILY VIDEO ================= -->
 
 <section id="familySection">
 
-    <div class="video-frame">
+```
+<div class="video-frame">
+
+    <video
+        id="familyVideo"
+        playsinline
+        muted
+        autoplay
+        loop
+        preload="auto"
+    >
+        <source src="./family1.mp4" type="video/mp4">
+    </video>
+
+</div>
+```
+
+</section>
+
+<!-- ================= FANCY FRENCH SCRATCH ================= -->
+
+<section id="frenchScratchSection">
+
+```
+<div class="frenchScratchCard">
+
+    <div class="scratchGlow"></div>
+
+    <div class="scratchTopDecor">
+        ◇
+    </div>
+
+    <div class="scratchSmallTitle">
+        NOTRE JOUR SPÉCIAL
+    </div>
+
+    <h2 class="scratchHeading">
+        La date à retenir
+    </h2>
+
+    <div class="scratchDivider">
+        <span>✦</span>
+    </div>
+
+    <p class="scratchInstruction">
+        Grattez délicatement pour découvrir
+        notre date spéciale
+    </p>
+
+
+    <div class="scratchBox">
+
+        <div class="scratchReveal">
+
+            <div class="revealTiny">
+                NOTRE GRAND JOUR
+            </div>
+
+            <div class="revealDate">
+                19 Décembre 2026
+            </div>
+
+            <div class="revealLine"></div>
+
+            <div class="revealFrench">
+                Le début d'une belle histoire
+            </div>
+
+        </div>
+
+
+        <canvas
+            id="frenchScratchCanvas">
+        </canvas>
+
+
+        <div id="scratchSparkles"></div>
+
+    </div>
+
+
+    <div class="scratchBottomText">
+        Un petit secret à découvrir...
+    </div>
+
+    <div class="scratchBottomDecor">
+        ✦　◇　✦
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= MENU ================= -->
+
+<section id="menuSection">
+
+```
+<div class="invitation-card menu-card">
+
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Floral"
+        class="corner-flower-tl"
+    >
+
+    <div class="menu-frame">
 
         <video
-            id="familyVideo"
+            id="menuVideo"
             playsinline
             muted
             autoplay
             loop
             preload="auto"
         >
-            <source src="./family1.mp4" type="video/mp4">
+            <source src="./menu.mp4" type="video/mp4">
         </video>
 
     </div>
 
-</section>
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Floral"
+        class="corner-flower-br"
+    >
 
-
-<!-- ================= FANCY FRENCH SCRATCH ================= -->
-
-<section id="frenchScratchSection">
-
-    <div class="frenchScratchCard">
-
-        <div class="scratchGlow"></div>
-
-        <div class="scratchTopDecor">
-            ◇
-        </div>
-
-        <div class="scratchSmallTitle">
-            NOTRE JOUR SPÉCIAL
-        </div>
-
-        <h2 class="scratchHeading">
-            La date à retenir
-        </h2>
-
-        <div class="scratchDivider">
-            <span>✦</span>
-        </div>
-
-        <p class="scratchInstruction">
-            Grattez délicatement pour découvrir
-            notre date spéciale
-        </p>
-
-
-        <div class="scratchBox">
-
-            <div class="scratchReveal">
-
-                <div class="revealTiny">
-                    NOTRE GRAND JOUR
-                </div>
-
-                <div class="revealDate">
-                    19 Décembre 2026
-                </div>
-
-                <div class="revealLine"></div>
-
-                <div class="revealFrench">
-                    Le début d'une belle histoire
-                </div>
-
-            </div>
-
-
-            <canvas
-                id="frenchScratchCanvas">
-            </canvas>
-
-
-            <div id="scratchSparkles"></div>
-
-        </div>
-
-
-        <div class="scratchBottomText">
-            Un petit secret à découvrir...
-        </div>
-
-        <div class="scratchBottomDecor">
-            ✦　◇　✦
-        </div>
-
-    </div>
+</div>
+```
 
 </section>
-
-
-<!-- ================= MENU ================= -->
-
-<section id="menuSection">
-
-    <div class="invitation-card menu-card">
-
-        <img
-            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
-            alt="Top Floral"
-            class="corner-flower-tl"
-        >
-
-        <div class="menu-frame">
-
-            <video
-                id="menuVideo"
-                playsinline
-                muted
-                autoplay
-                loop
-                preload="auto"
-            >
-                <source src="./menu.mp4" type="video/mp4">
-            </video>
-
-        </div>
-
-        <img
-            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
-            alt="Bottom Floral"
-            class="corner-flower-br"
-        >
-
-    </div>
-
-</section>
-
 
 <!-- ================= TIMELINE ================= -->
 
 <section id="timelineSection">
 
-    <div class="timeline-card">
+```
+<div class="timeline-card">
 
-        <img
-            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
-            alt="Top Floral"
-            class="timeline-flower-tl"
-        >
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Floral"
+        class="timeline-flower-tl"
+    >
 
-        <div class="timeline-intro">
-            La célébration de
-        </div>
+    <div class="timeline-intro">
+        La célébration de
+    </div>
 
-        <div class="timeline-title">
-            Notre mariage
-        </div>
+    <div class="timeline-title">
+        Notre mariage
+    </div>
 
-        <div class="timeline-divider"></div>
+    <div class="timeline-divider"></div>
 
-        <div class="timeline">
+    <div class="timeline">
 
-            <div class="timeline-item">
+        <div class="timeline-item">
 
-                <div class="timeline-time">
-                    18h
-                </div>
-
-                <div class="timeline-event">
-                    Arrivée des invités
-                </div>
-
+            <div class="timeline-time">
+                18h
             </div>
 
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    19h30
-                </div>
-
-                <div class="timeline-event">
-                    Entrée des mariés
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    20h
-                </div>
-
-                <div class="timeline-event">
-                    Présentation
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-time">
-                    21h30
-                </div>
-
-                <div class="timeline-event">
-                    Ouverture du buffet
-                </div>
-
+            <div class="timeline-event">
+                Arrivée des invités
             </div>
 
         </div>
 
 
-        <img
-            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
-            alt="Bottom Floral"
-            class="timeline-flower-br"
-        >
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                19h30
+            </div>
+
+            <div class="timeline-event">
+                Entrée des mariés
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                20h
+            </div>
+
+            <div class="timeline-event">
+                Présentation
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                21h30
+            </div>
+
+            <div class="timeline-event">
+                Ouverture du buffet
+            </div>
+
+        </div>
 
     </div>
 
-</section>
 
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Floral"
+        class="timeline-flower-br"
+    >
+
+</div>
+```
+
+</section>
 
 <!-- ================= VENUE ================= -->
 
 <section id="venueSection">
 
-    <div class="invitation-card venue-card">
+```
+<div class="invitation-card venue-card">
 
-        <img
-            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
-            alt="Top Floral"
-            class="corner-flower-tl"
-        >
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Floral"
+        class="corner-flower-tl"
+    >
 
-        <div class="sub-heading">
+    <div class="sub-heading">
+        LIEU DE L’EVENEMENT
+    </div>
+
+    <div class="venue-box">
+
+        <div class="venue-title-label">
             LIEU DE L’EVENEMENT
         </div>
 
-        <div class="venue-box">
-
-            <div class="venue-title-label">
-                LIEU DE L’EVENEMENT
-            </div>
-
-            <div class="venue-name">
-                Pera Restaurant
-            </div>
-
-            <div class="venue-city">
-                Kinshasa
-            </div>
-
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=-4.303107,15.303930"
-                target="_blank"
-                class="map-btn"
-            >
-                VIEW ON GOOGLE MAPS
-            </a>
-
+        <div class="venue-name">
+            Pera Restaurant
         </div>
 
-        <img
-            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
-            alt="Bottom Floral"
-            class="corner-flower-br"
+        <div class="venue-city">
+            Kinshasa
+        </div>
+
+        <a
+            href="https://www.google.com/maps/search/?api=1&query=-4.303107,15.303930"
+            target="_blank"
+            class="map-btn"
         >
+            VIEW ON GOOGLE MAPS
+        </a>
 
     </div>
 
-</section>
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Floral"
+        class="corner-flower-br"
+    >
 
+</div>
+```
+
+</section>
 
 <!-- ================= DRESS CODE ================= -->
 
 <section id="dressSection">
 
-    <div class="dress-card">
+```
+<div class="dress-card">
 
-        <img
-            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
-            alt="Top Floral"
-            class="corner-flower-tl"
-        >
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Floral"
+        class="corner-flower-tl"
+    >
 
-        <div class="dress-sub-heading">
-            Notre palette de mariage
+    <div class="dress-sub-heading">
+        Notre palette de mariage
+    </div>
+
+    <div class="description-text">
+        Nous aimerions que nos invités s'habillent dans des tons terreux chauds, du beige, du marron ou des teintes neutres pour correspondre à notre thème.
+    </div>
+
+    <div class="palette-container">
+
+        <div
+            class="color-circle"
+            style="background-color:#4F382B;"
+            title="Dark Brown">
         </div>
 
-        <div class="description-text">
-            Nous aimerions que nos invités s'habillent dans des tons terreux chauds, du beige, du marron ou des teintes neutres pour correspondre à notre thème.
+        <div
+            class="color-circle"
+            style="background-color:#8C5F43;"
+            title="Medium Brown">
         </div>
 
-        <div class="palette-container">
-
-            <div
-                class="color-circle"
-                style="background-color:#4F382B;"
-                title="Dark Brown">
-            </div>
-
-            <div
-                class="color-circle"
-                style="background-color:#8C5F43;"
-                title="Medium Brown">
-            </div>
-
-            <div
-                class="color-circle"
-                style="background-color:#C8B7A3;"
-                title="Light Beige / Taupe">
-            </div>
-
-            <div
-                class="color-circle"
-                style="background-color:#A27B5A;"
-                title="Caramel Tan">
-            </div>
-
-            <div
-                class="color-circle"
-                style="background-color:#000000;"
-                title="Black">
-            </div>
-
+        <div
+            class="color-circle"
+            style="background-color:#C8B7A3;"
+            title="Light Beige / Taupe">
         </div>
 
-        <img
-            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
-            alt="Bottom Floral"
-            class="corner-flower-br"
-        >
+        <div
+            class="color-circle"
+            style="background-color:#A27B5A;"
+            title="Caramel Tan">
+        </div>
+
+        <div
+            class="color-circle"
+            style="background-color:#000000;"
+            title="Black">
+        </div>
 
     </div>
 
-</section>
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Floral"
+        class="corner-flower-br"
+    >
 
+</div>
+```
+
+</section>
 
 <!-- ================= LAST FRAME ================= -->
 
 <section id="lastSection">
 
-    <div class="last-card">
+```
+<div class="last-card">
 
-        <img
-            src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
-            alt="Top Left Flower"
-            class="corner-flower-tl"
-        >
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Left Flower"
+        class="corner-flower-tl"
+    >
 
-        <img
-            src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
-            alt="Bottom Right Flower"
-            class="corner-flower-br"
-        >
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Right Flower"
+        class="corner-flower-br"
+    >
 
-        <div class="square-frame"></div>
+    <div class="square-frame"></div>
 
-        <div class="content">
+    <div class="content">
 
-            <div class="diamond-divider">
-                ◇
-            </div>
+        <div class="diamond-divider">
+            ◇
+        </div>
 
-            <div class="main-message">
+        <div class="main-message">
 
-                Pour tous ceux qui souhaitent nous offrir un cadeau,<br>
-                une participation en espèce sera appréciée.
+            Pour tous ceux qui souhaitent nous offrir un cadeau,<br>
+            une participation en espèce sera appréciée.
 
-            </div>
+        </div>
 
-            <div class="couple-names">
+        <div class="couple-names">
 
-                Danny
-                <span class="names-and">&amp;</span>
-                Rudy
+            Danny
+            <span class="names-and">&amp;</span>
+            Rudy
 
-            </div>
+        </div>
 
-            <div class="footer-details">
-                DECEMBER 19, 2026
-            </div>
-
+        <div class="footer-details">
+            DECEMBER 19, 2026
         </div>
 
     </div>
 
+</div>
+```
+
 </section>
 
+<!-- ================= RSVP ================= -->
+
+<section id="rsvpSection">
+
+```
+<div class="rsvp-card">
+
+    <img
+        src="https://i.postimg.cc/8kLFTSRf/IMG-8256.png"
+        alt="Top Floral"
+        class="corner-flower-tl"
+    >
+
+    <img
+        src="https://i.postimg.cc/dVwrb0gD/IMG-8254.png"
+        alt="Bottom Floral"
+        class="corner-flower-br"
+    >
+
+    <div class="rsvp-content">
+
+        <div class="rsvp-small-title">
+            VOTRE PRÉSENCE
+        </div>
+
+        <h2 class="rsvp-title">
+            RSVP
+        </h2>
+
+        <div class="rsvp-divider"></div>
+
+
+        <form id="rsvpForm">
+
+            <label
+                class="rsvp-label"
+                for="rsvpName">
+                Votre nom
+            </label>
+
+            <input
+                class="rsvp-field"
+                type="text"
+                id="rsvpName"
+                name="name"
+                placeholder="Écrivez votre nom"
+                required
+            >
+
+
+            <label class="rsvp-label">
+                Serez-vous parmi nous ?
+            </label>
+
+            <div class="rsvp-radio-group">
+
+                <div class="rsvp-radio">
+
+                    <input
+                        type="radio"
+                        id="attendingYes"
+                        name="attending"
+                        value="Oui"
+                        required
+                    >
+
+                    <label for="attendingYes">
+                        Oui
+                    </label>
+
+                </div>
+
+
+                <div class="rsvp-radio">
+
+                    <input
+                        type="radio"
+                        id="attendingNo"
+                        name="attending"
+                        value="Non"
+                    >
+
+                    <label for="attendingNo">
+                        Non
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <label
+                class="rsvp-label"
+                for="guestCount">
+                Nombre d'invités
+            </label>
+
+            <select
+                class="rsvp-select"
+                id="guestCount"
+                name="guests"
+                required
+            >
+
+                <option value="" selected disabled>
+                    Sélectionnez le nombre
+                </option>
+
+                <option value="1">
+                    1 invité
+                </option>
+
+                <option value="2">
+                    2 invités
+                </option>
+
+                <option value="3">
+                    3 invités
+                </option>
+
+                <option value="4">
+                    4 invités
+                </option>
+
+                <option value="5">
+                    5 invités
+                </option>
+
+                <option value="6">
+                    6 invités
+                </option>
+
+                <option value="7">
+                    7 invités
+                </option>
+
+                <option value="8">
+                    8 invités
+                </option>
+
+                <option value="9">
+                    9 invités
+                </option>
+
+                <option value="10">
+                    10 invités
+                </option>
+
+            </select>
+
+
+            <label
+                class="rsvp-label"
+                for="mealPreference">
+                Kindly select your meal preference
+            </label>
+
+            <div class="meal-note">
+                Veuillez sélectionner votre choix de repas
+            </div>
+
+            <select
+                class="rsvp-select"
+                id="mealPreference"
+                name="meal"
+                required
+            >
+
+                <option value="" selected disabled>
+                    Select your meal
+                </option>
+
+                <option value="Poulet Pera">
+                    Poulet Pera
+                </option>
+
+                <option value="T-Bone">
+                    T-Bone
+                </option>
+
+                <option value="Filet Pur">
+                    Filet Pur
+                </option>
+
+                <option value="Côte d’Agneau">
+                    Côte d’Agneau
+                </option>
+
+                <option value="Poisson Capitaine">
+                    Poisson Capitaine
+                </option>
+
+                <option value="Saumon">
+                    Saumon
+                </option>
+
+                <option value="Crevette">
+                    Crevette
+                </option>
+
+                <option value="A Grill Mix">
+                    A Grill Mix
+                </option>
+
+            </select>
+
+
+            <button
+                type="submit"
+                class="rsvp-submit"
+                id="rsvpSubmit">
+                CONFIRMER MA RÉPONSE
+            </button>
+
+
+            <div
+                id="rsvpMessage"
+                class="rsvp-message">
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+```
+
+</section>
 
 <script>
 
@@ -2612,6 +3019,135 @@ window.addEventListener(
             setupScratch();
 
         }
+
+    }
+);
+
+
+/* =========================================================
+   RSVP → GOOGLE SHEETS
+========================================================= */
+
+const RSVP_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzbM2qkxPdxzGX7cljNqLDXQFGbDsYjgBdP9qhO0k5lVP9lkVpeiFBxFSNzrNexzgQp/exec";
+
+
+const rsvpForm =
+    document.getElementById("rsvpForm");
+
+const rsvpSubmit =
+    document.getElementById("rsvpSubmit");
+
+const rsvpMessage =
+    document.getElementById("rsvpMessage");
+
+
+rsvpForm.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("rsvpName").value.trim();
+
+        const attending =
+            document.querySelector(
+                'input[name="attending"]:checked'
+            );
+
+        const guests =
+            document.getElementById("guestCount").value;
+
+        const meal =
+            document.getElementById("mealPreference").value;
+
+
+        if(!name || !attending || !guests || !meal){
+
+            rsvpMessage.textContent =
+                "Veuillez remplir tous les champs.";
+
+            rsvpMessage.classList.add("show");
+
+            return;
+
+        }
+
+
+        rsvpSubmit.disabled = true;
+
+        rsvpSubmit.textContent =
+            "ENVOI EN COURS…";
+
+
+        const formData = {
+
+            name:name,
+
+            attending:attending.value,
+
+            guests:guests,
+
+            meal:meal
+
+        };
+
+
+        fetch(
+            RSVP_SCRIPT_URL,
+            {
+                method:"POST",
+
+                mode:"no-cors",
+
+                headers:{
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:
+                    JSON.stringify(formData)
+            }
+        )
+        .then(
+            function(){
+
+                rsvpMessage.textContent =
+                    "Merci pour votre réponse. Nous avons bien reçu votre RSVP ✦";
+
+                rsvpMessage.classList.add("show");
+
+                rsvpForm.reset();
+
+                rsvpSubmit.disabled = false;
+
+                rsvpSubmit.textContent =
+                    "CONFIRMER MA RÉPONSE";
+
+            }
+        )
+        .catch(
+            function(error){
+
+                console.log(
+                    "RSVP error:",
+                    error
+                );
+
+                rsvpMessage.textContent =
+                    "Une erreur est survenue. Veuillez réessayer.";
+
+                rsvpMessage.classList.add("show");
+
+                rsvpSubmit.disabled = false;
+
+                rsvpSubmit.textContent =
+                    "CONFIRMER MA RÉPONSE";
+
+            }
+        );
 
     }
 );
